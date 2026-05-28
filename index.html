@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Micaela Rosental</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            --bg-color: #f8f9fa;
+            --text-main: #111;
+            --text-muted: #666;
+            --card-bg: #ffffff;
+            --gradient-primary: linear-gradient(90deg, #6A00FF 0%, #FF4500 100%);
+            --border-radius: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- UTILIDADES --- */
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-main);
+            border: 1px solid #ddd;
+        }
+
+        /* Variante WhatsApp para el botón secundario */
+        .btn-whatsapp {
+            background: white;
+            color: #25D366; /* Color de WhatsApp */
+            border: 2px solid #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background: #25D366;
+            color: white;
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: #6A00FF;
+            line-height: 1.2;
+            font-size: 18px;
+        }
+
+        nav {
+            display: none; 
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #6A00FF;
+        }
+
+        .header-profile-pic {
+            width: 45px; 
+            height: 45px; 
+            border-radius: 50%; 
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-profile-pic img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero .badge {
+            background: #eee;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #6A00FF;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 54px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 16px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .main-profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            object-fit: cover;
+            background: linear-gradient(white, white) padding-box, var(--gradient-primary) border-box;
+            border: 4px solid transparent;
+        }
+
+        /* --- MIDDLE SECTION (Sobre Mí + Cursos) --- */
+        .middle-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .about-col {
+            flex: 1.5;
+        }
+
+        .about-col h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .about-col > p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 15px;
+            border: 1px solid #eee;
+        }
+
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .skill-info h4 { font-size: 14px; margin-bottom: 2px; }
+        .skill-info p { font-size: 12px; color: var(--text-muted); }
+
+        .visual-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* --- TARJETA DE CURSOS --- */
+        .courses-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            flex: 1; 
+        }
+
+        .courses-card h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #6A00FF;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .course-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .course-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .course-item .course-inst {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .course-item .course-details {
+            font-size: 11px;
+            color: #888;
+            line-height: 1.4;
+        }
+
+        /* --- PROYECTOS --- */
+        .projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .projects-header h2 { font-size: 32px; margin-bottom: 10px; line-height: 1.2; }
+        .projects-header p { color: var(--text-muted); font-size: 14px; max-width: 400px; }
+        .projects-header a { color: #6A00FF; font-weight: 600; text-decoration: none; }
+
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .project-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover { transform: translateY(-5px); }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .project-content { padding: 25px; }
+
+        .tags { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+        .tag { background: #f0f0f0; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; color: #555; }
+
+        .project-content h3 { font-size: 20px; margin-bottom: 10px; }
+        .project-content p { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
+        .project-content a { color: #6A00FF; text-decoration: none; font-weight: 600; font-size: 14px; }
+
+        /* --- CONTACTO --- */
+        .contact-section {
+            text-align: center;
+            padding: 60px 20px;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box, var(--gradient-primary) border-box;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .contact-section h2 { font-size: 32px; margin-bottom: 15px; }
+        .contact-section p { color: var(--text-muted); margin-bottom: 30px; font-size: 15px; }
+        
+        .contact-buttons-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 30px 0;
+            border-top: 1px solid #eee;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: #6A00FF; }
+
+        /* =========================================
+           MEDIA QUERIES (PC)
+           ========================================= */
+        @media (min-width: 992px) {
+            nav { display: flex; }
+            .hero { flex-direction: row; align-items: center; }
+            .middle-section { flex-direction: row; }
+            .skills-grid { display: grid; grid-template-columns: 1fr 1fr; }
+            .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+            footer { flex-direction: row; justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="logo">Micaela Agustina<br>Rosental</div>
+        
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#sobre-mi">Sobre Mí</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <div class="header-profile-pic">
+            <img src="https://i.postimg.cc/LXt07JHH/Whats-App-Image-2025-09-21-at-10-57-43-138bf37e.jpg" alt="Perfil">
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <div class="badge">🚀 Desarrolladora Full Stack</div>
+            <h1>Soy <span class="text-gradient">Micaela Agustina</span>,<br>Desarrolladora Web</h1>
+            <p>Estudiante de Ingeniera en Informática en la Universidad de Buenos Aires  comprometida con la excelencia técnica y la ética profesional. Destaco por mi capacidad creativa para abordar proyectos y mi disposición para el aprendizaje autónomo. Actualmente, mi objetivo es integrarme en el sector tecnológico para aplicar mis conocimientos, priorizando siempre la honestidad y la colaboración efectiva en equipo.</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn btn-primary">Contactame ➔</a>
+                <a href="cv-micaela.pdf" download  class="btn btn-secondary">Descargar CV</a>
+            </div>
+        </div>
+        
+        <div class="hero-image-container">
+            <img src="https://i.postimg.cc/LXt07JHH/Whats-App-Image-2025-09-21-at-10-57-43-138bf37e.jpg" alt="Micaela Rosental" class="main-profile-pic">
+        </div>
+    </section>
+
+    <section class="middle-section" id="sobre-mi">
+        
+       <div class="section-card about-col">
+            <h2>Sobre Mí</h2>
+            <p>Desarrolladora Full Stack apasionada por crear soluciones digitales que no solo funcionen perfectamente, sino que también deleiten al usuario. Mi enfoque combina una sólida arquitectura backend (Java, Python, Node.js, C, Go) con el dinamismo del frontend (React.js, JavaScript avanzado), asegurando interfaces modernas y accesibles apoyadas en buenas prácticas, metodologías ágiles y patrones de diseño.</p>
+            
+            <h3 style="margin-bottom: 20px; color: #6A00FF; font-size: 18px;">Habilidades Técnicas</h3>
+            
+            <div class="skills-grid">
+                <!-- Tarjeta 1: Frontend -->
+                <div class="skill-item">
+                    <div class="skill-icon" style="background: #e34c26; color: white;">&lt;/&gt;</div>
+                    <div class="skill-info">
+                        <h4>Frontend: React, JS, HTML & CSS</h4>
+                        <p>JavaScript avanzado, maquetación web y desarrollo de interfaces dinámicas.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Backend -->
+                <div class="skill-item">
+                    <div class="skill-icon" style="background: #306998; color: white;">⚙️</div>
+                    <div class="skill-info">
+                        <h4>Backend: Java, Python, Node, C, Go</h4>
+                        <p>Desarrollo robusto, lógica compleja y arquitectura Full Stack.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Bases de Datos -->
+                <div class="skill-item">
+                    <div class="skill-icon" style="background: #00758F; color: white;">BD</div>
+                    <div class="skill-info">
+                        <h4>Bases de Datos</h4>
+                        <p>SQL y MongoDB. Estructuración, modelado y consultas eficientes.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4: Arquitectura -->
+                <div class="skill-item">
+                    <div class="skill-icon" style="background: #f89820; color: white;">📐</div>
+                    <div class="skill-info">
+                        <h4>Arquitectura y Diseño</h4>
+                        <p>POO, Patrones de Diseño, Trabajo Colaborativo y Metodologías Ágiles.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 5: Herramientas -->
+                <div class="skill-item">
+                    <div class="skill-icon" style="background: #333; color: white;">Git</div>
+                    <div class="skill-info">
+                        <h4>Herramientas e Innovación</h4>
+                        <p>Git/GitHub, IA aplicada (Coding Agents), Figma y Trello.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 6: Idiomas -->
+                <div class="skill-item">
+                    <div class="skill-icon" style="background: #6A00FF; color: white;">EN</div>
+                    <div class="skill-info">
+                        <h4>Inglés (B2)</h4>
+                        <p>Nivel intermedio-alto para documentación técnica y comunicación en equipo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="visual-col">
+            <div class="courses-card">
+                <h3>🎓Estudios</h3>
+                
+                <div class="course-item">
+                    <h4>Programación Web Full Stack Actualidad</h4>
+                    <div class="course-inst">Fundación Pescar | Banco Nación | NCR</div>
+                    <div class="course-details">Formación en Programación Web Full Stack - 237 horas.<br>Desarrollo de habilidades interpersonales - 120 horas.</div>
+                </div>
+
+                <div class="course-item">
+                    <h4>Programa Oracle Next Education (ONE)</h4>
+                    <div class="course-inst">Oracle / Alura Latam</div>
+                    <div class="course-details">Agosto 2025 – En curso</div>
+                </div>
+
+                <div class="course-item">
+                    <h4>Fundamentos de Bases de Datos UTN.BA</h4>
+                    <div class="course-inst">Centro de e-Learning</div>
+                    <div class="course-details">2025 - 37 horas</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="proyectos">
+        <div class="projects-header">
+            <div>
+                <h2>Proyectos Destacados</h2>
+                <p>Una selección de mis trabajos más recientes donde la arquitectura limpia se encuentra con el diseño excepcional.</p>
+            </div>
+            <a href="#">Ver Todo ➔</a>
+        </div>
+        <div class="projects-grid">
+            <!-- TARJETA: TIENDA LOS AMIGOS CON VIDEO -->
+            <div class="project-card">
+                
+                <video autoplay muted loop playsinline style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                    <!-- Actualizamos el source al nuevo nombre -->
+                    <source src="amigos.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+                
+                <div class="project-content">
+                    <div class="tags">
+                        <span class="tag">E-COMMERCE</span>
+                        <span class="tag">TIENDA NUBE</span>
+                    </div>
+                    <h3>Tienda Los Amigos</h3>
+                    <p>E-commerce para negocio local optimizando la presencia digital y la gestión de ventas con panel administrativo.</p>
+                    <a href="#">Ver Detalles ↗</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img" style="background: #222;">LiterAlura</div>
+                <div class="project-content">
+                    <div class="tags">
+                        <span class="tag">JAVA</span>
+                        <span class="tag">API REST</span>
+                    </div>
+                    <h3>Proyecto para Oracle Next Education</h3>
+                    <p>Desarrollo en Java. Consumo de API externa y estructuración de datos en tiempo real.</p>
+                    <a href="https://github.com/Micarosental1/Catalogo-de-literatura" target="_blank">Ver en GitHub ↗</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img" style="background: #87CEEB; color: #111;">Conversor</div>
+                <div class="project-content">
+                    <div class="tags">
+                        <span class="tag">JAVA</span>
+                    </div>
+                    <h3>Conversor de Monedas</h3>
+                    <p>Aplicación de consola en Java que realiza conversiones de divisas en tiempo real consumiendo datos externos.</p>
+                    <a href="https://github.com/Micarosental1/ConvertidorMoneda" target="_blank">Ver en GitHub ↗</a>
+                </div>
+            </div>
+        </div>
+
+      
+    </section>
+
+    <section class="section-card contact-section" id="contacto">
+        <h2>¿Listo para construir algo increíble?</h2>
+        <p>Estoy abierta a nuevas oportunidades y colaboraciones. Si tienes un proyecto en mente o simplemente quieres saludar, ¡mi bandeja de entrada está abierta!</p>
+        
+        <div class="contact-buttons-container">
+            <a href="mailto:Rosentalmicaela1@gmail.com" class="btn btn-primary" target="_blank">✉ Enviar Correo</a>
+            <a href="https://wa.me/5491154000139" class="btn btn-whatsapp" target="_blank">💬 Escribir al WhatsApp</a>
+        </div>
+    </section>
+
+</div> 
+
+    <div class="container" style="padding-top: 0;">
+        <footer>
+            <div style="font-weight: 600; color: #111;">Micaela Agustina Rosental</div>
+            <div>© 2026. Todos los derechos reservados.</div>
+            <div class="footer-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
